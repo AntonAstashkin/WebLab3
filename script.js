@@ -5,8 +5,15 @@ const countdownEl = document.getElementById('countdown');
 let countdownInterval;
 
 function startCountdown() {
+  clearInterval(countdownInterval);
+  
   const time = timerInput.value.split('.');
   let seconds = (+time[0]) * 60 * 60 + (+time[1]) * 60 + (+time[2]);
+  
+  if (seconds < 0) {
+    countdownEl.innerText = 'Недопустиме значення';
+    return;
+  }
   
   countdownInterval = setInterval(() => {
     const hours = Math.floor(seconds / 3600);
