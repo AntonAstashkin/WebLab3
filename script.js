@@ -10,7 +10,7 @@ function startCountdown() {
   const time = timerInput.value.split('.');
   let seconds = (+time[0]) * 60 * 60 + (+time[1]) * 60 + (+time[2]);
   
-  if (seconds < 0) {
+  if (seconds < 0 || time.length != 3) {
     countdownEl.innerText = 'Недопустиме значення';
     return;
   }
